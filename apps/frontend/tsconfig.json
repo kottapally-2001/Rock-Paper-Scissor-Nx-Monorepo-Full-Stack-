@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/apps/frontend",
+    "rootDir": "./",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src"
+  ]
+}

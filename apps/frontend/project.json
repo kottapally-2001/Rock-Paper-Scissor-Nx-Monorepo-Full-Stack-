@@ -1,0 +1,20 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "frontend",
+  "sourceRoot": "apps/frontend/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/frontend && vite"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/frontend && vite build"
+      }
+    }
+  }
+}
