@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  root: '.',
   server: {
-    port: 5173
-  }
+    port: 5176,
+    strictPort: false, // ✅ allow auto fallback
+    open: true,
+  },
 });
