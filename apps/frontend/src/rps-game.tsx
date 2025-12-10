@@ -10,9 +10,6 @@ const winRules: Record<Choice, Choice> = {
   scissors: 'paper',
 };
 
-// ✅ API URL from environment
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 export const RpsGame: React.FC = () => {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
@@ -23,11 +20,7 @@ export const RpsGame: React.FC = () => {
     if (gameOver) return;
 
     try {
-      // ✅ use env-based backend URL
-      const res = await axios.get<{ computerChoice: Choice }>(
-        `${API_URL}/game/play`
-      );
-
+      const res = await axios.get<{ computerChoice: Choice }>('http://localhost:3000/game/play');
       const computerSelection = res.data.computerChoice;
 
       if (playerSelection === computerSelection) {
@@ -39,7 +32,6 @@ export const RpsGame: React.FC = () => {
         const newScore = playerScore + 1;
         setPlayerScore(newScore);
         setResult(`You win! ${playerSelection} beats ${computerSelection}`);
-
         if (newScore === 5) {
           setResult('🎉 You won the game!');
           setGameOver(true);
@@ -48,7 +40,6 @@ export const RpsGame: React.FC = () => {
         const newScore = computerScore + 1;
         setComputerScore(newScore);
         setResult(`You lose! ${computerSelection} beats ${playerSelection}`);
-
         if (newScore === 5) {
           setResult('😞 Computer won the game!');
           setGameOver(true);
@@ -56,7 +47,7 @@ export const RpsGame: React.FC = () => {
       }
     } catch (e) {
       console.error(e);
-      setResult('Error contacting the backend');
+      setResult('Error contacting the backend. Is it running on port 3000?');
     }
   };
 
@@ -70,10 +61,9 @@ export const RpsGame: React.FC = () => {
   return (
     <div className="game-box">
       <h1>Rock Paper Scissors</h1>
-
       <div className="scoreboard">
-        <p>Player: {playerScore}</p>
-        <p>Computer: {computerScore}</p>
+        <p id="player-score">Player: {playerScore}</p>
+        <p id="computer-score">Computer: {computerScore}</p>
       </div>
 
       <div className="buttons">
