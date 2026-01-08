@@ -3,6 +3,12 @@
   "name": "backend",
   "projectType": "application",
   "sourceRoot": "apps/backend/src",
+
+  "scripts": {
+    "nx": "nx",
+
+    "dev:backend": "nx serve backend"
+  },
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
