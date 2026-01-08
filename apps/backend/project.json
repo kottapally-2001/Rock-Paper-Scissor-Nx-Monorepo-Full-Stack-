@@ -6,7 +6,7 @@
 
   "scripts": {
     "nx": "nx",
-
+    "build": "nx build backend",
     "dev:backend": "nx serve backend"
   },
   "targets": {
