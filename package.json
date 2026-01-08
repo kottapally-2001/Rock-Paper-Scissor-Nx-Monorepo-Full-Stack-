@@ -11,7 +11,7 @@
     "dev:frontend": "nx serve frontend",
 
     "dev": "concurrently -k -s first \"nx serve backend\" \"npx wait-on http://localhost:3000 && nx serve frontend\"",
-    "build": "nx build backend",
+    "build": "npx nx build backend",
     "start": "node dist/apps/backend/main.js"
   },
 
